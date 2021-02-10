@@ -56,3 +56,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'shrine'
+gem 'mail_form'
+gem 'simple_form'
+gem 'fastimage'
