@@ -1,0 +1,104 @@
+
+
+
+<h1>Admins#index</h1>
+<h1>Events</h1>
+<a class ="" href="/users">Liste des utilisateurs</a>
+<% @events.each do |event| %>
+
+<table class="table table-striped">
+
+
+  <tbody>
+
+  
+  <% if event.accept %>
+  
+  <% else %>
+    <div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <%= event.title %>
+        <%= link_to 'Show', event %>
+        <%= link_to 'Edit', edit_event_path(event) %>
+       
+       
+        <%= link_to 'Refuser', event, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+        <%= link_to 'Accepter', event, method: :accept %>
+
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+     
+      <scope="col">Titre: <%= event.title %><br>
+      <scope="col">Date: <%= event.date %><br>
+      <scope="col">Heur: <%= event.hour %><br>
+
+      <scope="col">Adresse: <%= event.adress %><br>
+      <scope="col">Description: <%= event.description %><br>
+      <scope="col">Image: <%= image_tag event.image_url, height: 200 if event.image %><br>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+
+<br>
+
+<% @homes.each do |home| %>
+
+  <table class="table table-striped">
+  
+    <tbody>
+  
+    
+    <% if home.accepted %>
+    
+    <% else %>
+      <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          
+          <%= link_to 'Show', home %>
+          <%= link_to 'Edit', edit_home_path(home) %>
+         
+         
+          <%= link_to 'Refuser', home, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+          <%= link_to 'Accepter', home, method: :accepted %>
+  
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+       
+        <th><%= current_user.firstname %></th>
+        <td><%= home.created_at %></td>
+      </div>
+      <td><%= home.description %></td>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+
+<%= link_to 'New Event', new_event_path %>
