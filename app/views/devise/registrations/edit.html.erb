@@ -22,6 +22,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :prénom %><br />
+    <%= f.text_field :firstname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nom %><br />
+    <%= f.text_field :lastname %>
+  </div>
+
+    <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  
+  <%= @home.title %>
+</p>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @home.description %>
+</p>
+
+
+<% if user_signed_in? && current_user.role === 'admin' %>
+  <%= link_to 'Refuser', @event, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+  <%= link_to 'Editer', edit_home_path(@home) %> 
+<% end %>
+
+<%= link_to 'Retour', events_path %>

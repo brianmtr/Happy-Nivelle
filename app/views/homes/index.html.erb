@@ -1,0 +1,65 @@
+<p>Bonjour  
+<% if user_signed_in? %>
+  <%= current_user.firstname %>
+<% end %>
+</p>
+<h2>Évenements</h2>
+
+
+
+<table>
+  <% @events.each do |event| %>
+    <% if event.accept %>
+  <tbody>      
+    <tr>
+      <th><%= event.title %></th><br>
+      <td><%= event.date %></td>
+      <td><%= event.hour %></td>
+      <td><%= event.adress %></td>
+      <td><%= event.description %></td>
+      <td><%= image_tag event.image_url, height: 200 if event.image %></td>
+      <td><%= link_to 'Voir événement', event_path(event.id) %></td>
+    </tr>
+  <br>
+  <% end %>
+  </tbody>
+</table>
+    <% end %>
+<br>
+
+<h2>Commentaire</h2>
+
+<table>
+  <% @homes.each do |home| %>
+    
+    <% if home.accepted %>
+    
+    <div class="list-group" style="margin-left: 20%">
+  <a href="#" class="list-group-item list-group-item-action active" aria-current="true" style="width: 60%">
+    <div class="d-flex w-100 justify-content-between">
+    
+      <h5 class="mb-1"><th>
+      <% if user_signed_in? %>
+      <%= current_user.firstname %>
+      <% else %>
+      <% end %>
+      </th></h5>
+      <small><td><%= home.created_at %></td></small>
+      
+    </div>
+    <p class="mb-1"><td><%= home.description %></td></small>
+  </a>
+  <%= link_to 'Supprimer', home, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+
+</div>
+
+
+</table>
+
+
+<% end %>
+<% end %>
+
+<%= link_to 'Ajouter un commentaire', new_home_path %>
+
+
