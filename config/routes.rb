@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   post '/events/:id', to: 'admins#accept'
   get '/users/index'
   post '/users/:id', to: 'users#role'
+
+  resources "contacts", only: [:new, :create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
