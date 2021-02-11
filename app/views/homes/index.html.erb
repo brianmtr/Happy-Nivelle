@@ -51,7 +51,10 @@
 
     <p class="mb-1"><%= home.description %></p>
   </a>
+  <% if user_signed_in? && current_user.role === 'admin' %>
   <%= link_to 'Supprimer', home, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+  <% end %>
+  <br>
 </div>
 
 
@@ -60,7 +63,7 @@
 
 <% end %>
 <% end %>
-
+<% if user_signed_in? %>
 <%= link_to 'Ajouter un commentaire', new_home_path %>
-
+<% end %>
 
