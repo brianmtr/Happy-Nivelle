@@ -29,32 +29,33 @@
 
 <h2>Commentaire</h2>
 
-<table>
+
   <% @homes.each do |home| %>
+  
     
     <% if home.accepted %>
     
     <div class="list-group" style="margin-left: 20%">
-  <a href="#" class="list-group-item list-group-item-action active" aria-current="true" style="width: 60%">
+  <a class="list-group-item list-group-item-action active" aria-current="true" style="width: 60%">
     <div class="d-flex w-100 justify-content-between">
     
-      <h5 class="mb-1"><th>
+      <h5 class="mb-1">
       <% if user_signed_in? %>
       <%= current_user.firstname %>
-      <% else %>
+      
       <% end %>
-      </th></h5>
-      <small><td><%= home.created_at %></td></small>
+      </h5>
+      <small><%= home.created_at %></small>
       
     </div>
-    <p class="mb-1"><td><%= home.description %></td></small>
+
+    <p class="mb-1"><%= home.description %></p>
   </a>
   <%= link_to 'Supprimer', home, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
-
 </div>
 
 
-</table>
+
 
 
 <% end %>
